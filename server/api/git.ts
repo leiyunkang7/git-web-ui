@@ -1,7 +1,9 @@
 import { simpleGit } from 'simple-git'
 
+const gitPath = '/home/leiyunkang/code/github/core'
+
 export async function getLog(){
-  const git = simpleGit('./', {binary: 'git'})
+  const git = simpleGit(gitPath, {binary: 'git'})
   return git.log()
 }
 export default defineEventHandler(() => {

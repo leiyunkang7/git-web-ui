@@ -34,5 +34,6 @@ module.exports = {
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     'vue/multi-word-component-names': 'off',
+    'no-undef': 'off'
   },
 }

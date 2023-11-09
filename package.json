@@ -27,7 +27,6 @@
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
     "@vueuse/nuxt": "^10.5.0",
-    "axios": "^1.6.1",
     "simple-git": "^3.20.0"
   }
 }
