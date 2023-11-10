@@ -34,6 +34,14 @@ module.exports = {
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     'vue/multi-word-component-names': 'off',
-    'no-undef': 'off'
+    'no-undef': 'off',
+    'max-len': [
+      'error',
+      {
+        'code': 80,
+        'ignorePattern': 
+          '^\\s*(import|export)\\s+.*$|https?://\\S+|<!--.*-->$|/\\*.*\\*/'
+      }
+    ]
   },
 }
