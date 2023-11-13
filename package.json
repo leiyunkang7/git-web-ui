@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^1.0.1",
+    "@nuxt/devtools": "^1.0.2",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/tailwindcss": "^6.9.4",
     "@types/luxon": "^3.3.4",
@@ -29,10 +29,10 @@
   "dependencies": {
     "@nuxt/ui": "^2.10.0",
     "@pinia/nuxt": "^0.5.1",
-    "@vueuse/nuxt": "^10.6.0",
+    "@vueuse/nuxt": "^10.6.1",
     "ag-grid-community": "^30.2.1",
     "ag-grid-vue3": "^30.2.1",
-    "luxon": "^3.4.3",
+    "luxon": "^3.4.4",
     "simple-git": "^3.20.0"
   }
 }
