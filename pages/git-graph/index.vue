@@ -13,7 +13,9 @@ const logData = reactive({
 })
 
 async function getData() {
-  const { data } = await useFetch('/api/git', {})
+  useFetch('/api/git/branch', {method: 'post',})
+
+  const { data } = await useFetch('/api/git/log', { method: 'post', body: ['remotes/origin/3.2'] })
   logData.result = data.value as LogResult
 }
 
