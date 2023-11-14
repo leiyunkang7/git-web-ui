@@ -1,12 +1,10 @@
 <template>
-  <UContainer>
-    <NuxtPage />
-  </UContainer>
-
-  <UNotifications />
+  <NuxtLayout>
+    <v-app>
+      <NuxtPage />
+    </v-app>
+  </NuxtLayout>
 </template>
 <script setup lang="ts">
-// import process from 'process'
-// window.process = process
-
+import '@mdi/font/css/materialdesignicons.min.css'
 </script>
