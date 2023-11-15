@@ -1,6 +1,8 @@
 
 
 <script setup lang="ts">
+import { useGraphStore } from '../store'
+
 
 const props = defineProps<{
   modelValue: string[]
@@ -9,19 +11,17 @@ const emit = defineEmits(['update:modelValue'])
 
 const value = useVModel(props, 'modelValue', emit)
 
+const { branchSummary, branchKeyword } = storeToRefs(useGraphStore())
 
-const { data,   } =  useFetch('/api/git/branch', {method: 'post',})
-
-const keyword = ref('')
 
 const items = computed(() => {
-  if (!keyword.value) {
-    return data.value?.all
+  if (!branchKeyword.value) {
+    return branchSummary.value?.all
   }
-  return data.value?.all?.filter(item => item.includes(keyword.value))
+  const pattern = new RegExp(branchKeyword.value, 'i')
+  return branchSummary.value?.all?.filter(item =>  pattern.test(item))
 
 })
-
 
 
 </script>
@@ -37,7 +37,7 @@ const items = computed(() => {
   >
     <template #prepend-item>
       <v-text-field
-        v-model="keyword"
+        v-model="branchKeyword"
         autofocus
         placeholder="请输入搜索"
       />

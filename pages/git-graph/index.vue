@@ -5,8 +5,15 @@ import 'ag-grid-community/styles/ag-grid.css' // Core grid CSS, always needed
 import 'ag-grid-community/styles/ag-theme-material.css' // Optional theme CSS
 import type { LogResult, } from 'simple-git'
 import { gridOptions } from './grid-options'
-import {gridListeners, snackbar, snackbarText} from './grid-listeners'
+import {gridListeners,} from './grid-listeners'
 import BranchSelect from './components/branch-select.vue'
+import { useGraphStore } from './store'
+
+const { 
+  snackbar, 
+  snackbarText, 
+  showRemoteBranch
+} = storeToRefs(useGraphStore())
 
 const logData = reactive({
   result: {} as LogResult
@@ -14,22 +21,22 @@ const logData = reactive({
 
 async function getData() {
 
-  const { data } = await useFetch('/api/git/log', { method: 'post', body: brancheList.value })
+  const { data } = await useFetch('/api/git/log',
+    { method: 'post', body: branchList.value }
+  )
   logData.result = data.value as LogResult
 }
 
-const brancheList = ref([])
+const branchList = ref([])
 
-const showRemoteBranche = ref(true)
-
-watch(brancheList, () => {
+watch(branchList, () => {
   getData()
 }, {immediate: true})
 
 const gridApi = ref(null) // Optional - for accessing Grid's API
 
 // Obtain API from grid's onGridReady event
-const onGridReady = (params) => {
+const onGridReady = (params:any) => {
   gridApi.value = params.api
   getData()
 }
@@ -41,11 +48,11 @@ const onGridReady = (params) => {
   <div>
     <div class="mb-2 flex items-center space-x-6">
       <BranchSelect
-        v-model="brancheList"
+        v-model="branchList"
         class="flex-5 w-1/3"
       />
       <v-checkbox
-        v-model="showRemoteBranche"
+        v-model="showRemoteBranch"
         label="显示远程分支"
       />
     </div>

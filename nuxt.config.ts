@@ -2,9 +2,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: [ '@nuxtjs/eslint-module', '@pinia/nuxt', 
+  modules: [
+    '@nuxtjs/eslint-module', 
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: [
+        // 自动引入 `defineStore()`
+          'defineStore',
+        ],
+      },
+    ], 
     '@invictus.codes/nuxt-vuetify',
-    '@nuxtjs/tailwindcss',  '@vueuse/nuxt', 'nuxt-vitest',
+    '@nuxtjs/tailwindcss', 
+    '@vueuse/nuxt',
+    'nuxt-vitest',
     
   ]  ,
   tailwindcss: {

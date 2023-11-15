@@ -4,7 +4,6 @@ import type {TaskOptions} from 'simple-git'
 const gitPath = '/home/leiyunkang/code/github/core'
 
 export default defineEventHandler(async (event) => {
-  // const query = getQuery<TaskOptions | undefined>(event)
   const body = await readBody<TaskOptions | undefined>(event)
   return getBranch(body)
 })
