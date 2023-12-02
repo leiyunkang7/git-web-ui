@@ -1,7 +1,7 @@
 import { simpleGit } from 'simple-git'
 import type {TaskOptions, LogOptions} from 'simple-git'
+import { gitPath } from '~/server/constant'
 
-const gitPath = '/home/leiyunkang/code/github/core'
 
 export async function getLog(options?: TaskOptions | LogOptions){
   const git = simpleGit(gitPath, {binary: 'git'})

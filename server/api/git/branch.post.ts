@@ -1,7 +1,6 @@
 import { simpleGit } from 'simple-git'
 import type {TaskOptions} from 'simple-git'
-
-const gitPath = '/home/leiyunkang/code/github/core'
+import { gitPath } from '~/server/constant'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<TaskOptions | undefined>(event)

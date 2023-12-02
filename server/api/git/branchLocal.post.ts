@@ -1,6 +1,6 @@
 import { simpleGit } from 'simple-git'
+import { gitPath } from '~/server/constant'
 
-const gitPath = '/home/leiyunkang/code/github/core'
 
 export default defineEventHandler(async () => {
   return getBranchLocal()
