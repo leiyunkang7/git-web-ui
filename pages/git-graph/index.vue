@@ -42,6 +42,9 @@ const onGridReady = (params:any) => {
 }
 
 
+function handleReload() {
+  getData()
+}
 </script>
 
 <template>
@@ -70,6 +73,7 @@ const onGridReady = (params:any) => {
       <v-btn
         icon="mdi-refresh"
         title="Refresh"
+        @click="handleReload"
       />
     </div>
     <ag-grid-vue

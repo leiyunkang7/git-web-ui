@@ -1,6 +1,7 @@
 import { reactive, } from 'vue'
 import { DateTime } from 'luxon'
 import type { GridOptions, ValueFormatterParams } from 'ag-grid-community'
+import MessageRenderer from './cell-renders/message-renderer'
 
 export const gridOptions = reactive<GridOptions>({  
   defaultColDef: {   
@@ -8,6 +9,7 @@ export const gridOptions = reactive<GridOptions>({
   },   
   columnDefs: [   
     { field: 'message', headerName: '描述', resizable: true,
+      cellRenderer: 'MessageRenderer',
       flex: 5, filter: 'agTextColumnFilter', tooltipField: 'message', },
     { field: 'date', headerName: '日期', valueFormatter:
      formatDate, resizable: true, minWidth: 160, 
@@ -25,6 +27,9 @@ export const gridOptions = reactive<GridOptions>({
   animateRows: true,
   tooltipShowDelay: 500,
   tooltipMouseTrack: true,
+  components: {
+    MessageRenderer
+  }
 },)
 
 function formatDate(params: ValueFormatterParams) {
