@@ -56,14 +56,21 @@ const onGridReady = (params:any) => {
         label="显示远程分支"
       />
 
-      <v-btn icon="mdi-cog" title="Repositroy Settings"></v-btn>
+      <v-btn
+        icon="mdi-cog"
+        title="Repositroy Settings"
+      />
 
 
-      <v-btn icon="mdi-cloud-download-outline" title="Fetch from Remote(s)" ></v-btn>
+      <v-btn
+        icon="mdi-cloud-download-outline"
+        title="Fetch from Remote(s)"
+      />
 
-      <v-btn icon="mdi-refresh" title="Refresh"></v-btn>
-      
-      
+      <v-btn
+        icon="mdi-refresh"
+        title="Refresh"
+      />
     </div>
     <ag-grid-vue
       class="ag-theme-material"
