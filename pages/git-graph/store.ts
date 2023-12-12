@@ -1,4 +1,5 @@
-import type { BranchSummary } from 'simple-git'
+import type { BranchSummary,RemoteWithRefs } from 'simple-git'
+import {computed} from 'vue'
 
 export const useGraphStore = defineStore('graph', () => {
   const snackbar = ref(false)
@@ -10,13 +11,17 @@ export const useGraphStore = defineStore('graph', () => {
   const branchKeyword = ref('')
 
   const { branchSummary } = branchLogical({showRemoteBranch,branchKeyword})
+
+  const {remoteList, remoteMap} = remoteLogical()
   
   return {
     snackbar,
     snackbarText,
     showRemoteBranch,
     branchSummary,
-    branchKeyword
+    branchKeyword,
+    remoteList,
+    remoteMap
   }
 })
 
@@ -38,5 +43,30 @@ function branchLogical({
 
   return {
     branchSummary
+  }
+}
+
+function remoteLogical() {
+  const remoteList = ref<RemoteWithRefs[] | null>(null)
+
+
+  useFetch(
+    '/api/git/remote', 
+    {method: 'post', body:{verbose:true} }).then(({data}) => {
+
+    remoteList.value = (data.value ?? [] )as RemoteWithRefs[]
+  })
+
+  const remoteMap = computed(() => {
+    const map:{[x in string]: RemoteWithRefs} = {}
+    remoteList.value?.forEach((remote) => {
+      map[remote.name] = remote
+    })
+    return map
+  })
+  
+  return {
+    remoteList,
+    remoteMap
   }
 }

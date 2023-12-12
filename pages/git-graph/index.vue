@@ -12,7 +12,8 @@ import { useGraphStore } from './store'
 const { 
   snackbar, 
   snackbarText, 
-  showRemoteBranch
+  showRemoteBranch,
+  remoteMap
 } = storeToRefs(useGraphStore())
 
 const logData = reactive({
@@ -21,10 +22,10 @@ const logData = reactive({
 
 async function getData() {
 
-  const { data } = await useFetch('/api/git/log',
+  const { data } = await useFetch<LogResult>('/api/git/log',
     { method: 'post', body: branchList.value }
   )
-  logData.result = data.value as LogResult
+  logData.result = data.value ?? {} as LogResult
 }
 
 const branchList = ref([])
@@ -49,6 +50,7 @@ function handleReload() {
 
 <template>
   <div>
+    {{ remoteMap }}
     <div class="mb-2 flex items-center space-x-6">
       <BranchSelect
         v-model="branchList"
