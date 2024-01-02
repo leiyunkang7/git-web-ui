@@ -13,29 +13,29 @@
     "@invictus.codes/nuxt-vuetify": "^0.3.0",
     "@nuxt/devtools": "^1.0.6",
     "@nuxtjs/eslint-module": "^4.1.0",
-    "@nuxtjs/tailwindcss": "^6.10.1",
+    "@nuxtjs/tailwindcss": "^6.10.3",
     "@types/luxon": "^3.3.7",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
     "eslint": "^8.56.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-vue": "^9.19.2",
     "happy-dom": "^12.10.3",
-    "nuxt": "^3.8.2",
-    "nuxt-icon": "^0.6.7",
+    "nuxt": "^3.9.0",
+    "nuxt-icon": "^0.6.8",
     "nuxt-vitest": "^0.11.5",
-    "vitest": "^1.1.0",
-    "vue": "^3.3.13",
+    "vitest": "^1.1.1",
+    "vue": "^3.4.3",
     "vue-router": "^4.2.5",
-    "vuetify": "^3.4.8"
+    "vuetify": "^3.4.9"
   },
   "dependencies": {
-    "@mdi/font": "^7.3.67",
+    "@mdi/font": "^7.4.47",
     "@pinia/nuxt": "^0.5.1",
-    "@vueuse/nuxt": "^10.7.0",
+    "@vueuse/nuxt": "^10.7.1",
     "ag-grid-community": "^31.0.1",
     "ag-grid-vue3": "^31.0.1",
     "luxon": "^3.4.4",
-    "simple-git": "^3.21.0"
+    "simple-git": "^3.22.0"
   }
 }
