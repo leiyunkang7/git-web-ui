@@ -1,5 +1,5 @@
 import type { DefaultLogFields } from 'simple-git'
-import { useGraphStore } from '~/pages/git-graph/store'
+import { formatRefs } from './refs'
 
 export default defineComponent({
   name: 'MessageRenderer',
@@ -13,27 +13,24 @@ export default defineComponent({
   setup(props) {
     const data = props.params.data as DefaultLogFields
 
+    
+    // const refList = data.refs.split(', ').map(label => {
+
+    //   const item = {
+    //     label
+    //   }
+  
+    //   return item
+      
+    // })
+    
     const refList = formatRefs(data.refs)
 
-    const { remoteMap } = storeToRefs(useGraphStore())
+    // debugger
 
+    // })
 
-    const Refs = refList.map(item => {
-
-    })
-
-    return () => <div>{data.refs}{data.message}</div>
+    return () => <div>{refList.length&&JSON.stringify(refList)}{data.message}</div>
   }
 })
 
-export function formatRefs(str: string) {
-  return str.split(', ').map(label => {
-
-    const item = {
-      label
-    }
-
-    return item
-    
-  })
-}
