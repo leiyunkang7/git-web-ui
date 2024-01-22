@@ -1,44 +1,44 @@
-import { useGraphStore } from "../store"
+import { useGraphStore } from '../store'
 
 export function formatRefs(str: string) {
-  return str.split(', ').map(label => {
+  return str
+    .split(', ')
+    .map(label => {
+      const tagName = tagLogical(label)
 
-    const tagName = tagLogical(label)
-
-    if(tagName){
-      return {
-        isTag: true,
-        tagName
+      if (tagName) {
+        return {
+          isTag: true,
+          tagName
+        }
       }
-    }
 
-    const branchResult = branchLogical(label)
+      const branchResult = branchLogical(label)
 
-    if(branchResult){
-      return {
-        ...branchResult,
-        isBranch: true,
+      if (branchResult) {
+        return {
+          ...branchResult,
+          isBranch: true
+        }
       }
-    }
 
-    const headName = headLogical(label)
+      const headName = headLogical(label)
 
-    if(headName){
-      return {
-        isHead: true,
-        headName
+      if (headName) {
+        return {
+          isHead: true,
+          headName
+        }
       }
-    }
-
-    
-  }).filter(Boolean)
+    })
+    .filter(Boolean)
 }
 
 const tagText = 'tag: '
 export function tagLogical(str: string) {
-  const isTag =  str.startsWith(tagText)
+  const isTag = str.startsWith(tagText)
 
-  if(!isTag) return
+  if (!isTag) return
 
   const tagName = str.replace(tagText, '')
 
@@ -46,32 +46,29 @@ export function tagLogical(str: string) {
 }
 
 export function branchLogical(str: string) {
-
   const [originName, branchName] = str.split('/')
-  
-  
+
   const { remoteMap } = storeToRefs(useGraphStore())
 
-  if(!originName) return 
+  if (!originName) return
 
   const originList = Object.keys(remoteMap.value)
 
-  const isBranch =  originList.includes(originName)
+  const isBranch = originList.includes(originName)
 
-  if(!isBranch) return 
+  if (!isBranch) return
 
   return {
     originName,
     branchName
   }
-
 }
 
 const headText = 'HEAD -> '
 export function headLogical(str: string) {
-  const isHead =  str.startsWith(headText)
+  const isHead = str.startsWith(headText)
 
-  if(!isHead) return
+  if (!isHead) return
 
   const branchName = str.replace(headText, '')
 

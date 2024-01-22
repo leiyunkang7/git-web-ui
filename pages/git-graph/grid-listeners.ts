@@ -1,13 +1,10 @@
-import type {CellClickedEvent } from 'ag-grid-community'
+import type { CellClickedEvent } from 'ag-grid-community'
 import { useGraphStore } from './store'
 
-const {  copy,   } = useClipboard({ legacy: true })
+const { copy } = useClipboard({ legacy: true })
 
-
-
-function cellClicked(event:CellClickedEvent) {
-
-  if(event.colDef.field !== 'hash') return
+function cellClicked(event: CellClickedEvent) {
+  if (event.colDef.field !== 'hash') return
 
   const { snackbar, snackbarText } = storeToRefs(useGraphStore())
 
@@ -17,9 +14,8 @@ function cellClicked(event:CellClickedEvent) {
     snackbar.value = true
     snackbarText.value = '复制成功!'
   })
-  
 }
- 
+
 export const gridListeners = {
   cellClicked
 }

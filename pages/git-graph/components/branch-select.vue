@@ -1,8 +1,5 @@
-
-
 <script setup lang="ts">
 import { useGraphStore } from '../store'
-
 
 const props = defineProps<{
   modelValue: string[]
@@ -13,19 +10,14 @@ const value = useVModel(props, 'modelValue', emit)
 
 const { branchSummary, branchKeyword } = storeToRefs(useGraphStore())
 
-
 const items = computed(() => {
   if (!branchKeyword.value) {
     return branchSummary.value?.all
   }
   const pattern = new RegExp(branchKeyword.value, 'i')
-  return branchSummary.value?.all?.filter(item =>  pattern.test(item))
-
+  return branchSummary.value?.all?.filter(item => pattern.test(item))
 })
-
-
 </script>
-
 
 <template>
   <v-select
@@ -46,6 +38,4 @@ const items = computed(() => {
   </v-select>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
